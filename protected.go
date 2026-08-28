@@ -21,19 +21,19 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/ebrasha/abdal-machine-fingerprint/core/encode"
-	"github.com/ebrasha/abdal-machine-fingerprint/core/hash"
-	"github.com/ebrasha/abdal-machine-fingerprint/core/machine"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/encode"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/hash"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/machine"
 )
 
 // AbdalProtected returns a lowercase hexadecimal protected fingerprint for the application.
 func AbdalProtected(applicationID, algorithm string) (string, error) {
-	return abdalProtectedWithEncoding(applicationID, algorithm, encode.EncodingHex)
+	return abdalProtectedWithEncoding(applicationID, algorithm, encode.Encoding(DefaultEncoding))
 }
 
 // AbdalHMAC returns a lowercase hexadecimal HMAC-style protected fingerprint.
 func AbdalHMAC(applicationID, algorithm string) (string, error) {
-	return abdalProtectedWithEncoding(applicationID, algorithm, encode.EncodingHex)
+	return abdalProtectedWithEncoding(applicationID, algorithm, encode.Encoding(DefaultEncoding))
 }
 
 func abdalProtectedWithEncoding(applicationID, algorithm string, outputEncoding encode.Encoding) (string, error) {

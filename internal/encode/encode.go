@@ -27,6 +27,7 @@ import (
 // Encoding identifies a supported output encoding format.
 type Encoding string
 
+// Canonical encoding identifiers. Values mirror abdalmf/abdalconstants.go.
 const (
 	EncodingHex       Encoding = "HEX"
 	EncodingHexUpper  Encoding = "HEX-UPPER"
@@ -59,10 +60,10 @@ func normalizeEncodingName(name string) string {
 }
 
 var encodingAliases = map[string]Encoding{
-	"HEX":       EncodingHex,
-	"HEXUPPER":  EncodingHexUpper,
-	"BASE64":    EncodingBase64,
-	"BASE64URL": EncodingBase64URL,
+	normalizeEncodingName(string(EncodingHex)):       EncodingHex,
+	normalizeEncodingName(string(EncodingHexUpper)):  EncodingHexUpper,
+	normalizeEncodingName(string(EncodingBase64)):    EncodingBase64,
+	normalizeEncodingName(string(EncodingBase64URL)): EncodingBase64URL,
 }
 
 // Bytes encodes digest bytes using the requested output format.

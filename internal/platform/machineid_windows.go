@@ -2,11 +2,11 @@
  **********************************************************************
  * -------------------------------------------------------------------
  * Project Name : Abdal Machine Fingerprint
- * File Name    : machineid_linux.go
+ * File Name    : machineid_windows.go
  * Programmer   : Ebrahim Shafiei (EbraSha)
  * Email        : Prof.Shafiei@Gmail.com
  * Created On   : 2026-08-28 18:13:17
- * Description  : Linux machine-id file reader for stable OS identity.
+ * Description  : Windows MachineGuid registry reader.
  * -------------------------------------------------------------------
  *
  * "Coding is an engaging and beloved hobby for me. I passionately and insatiably pursue knowledge in cybersecurity and programming."
@@ -15,35 +15,29 @@
  **********************************************************************
  */
 
-//go:build linux
+//go:build windows
 
 package platform
 
-import "os"
-
-const (
-	dbusMachineIDPath = "/var/lib/dbus/machine-id"
-	etcMachineIDPath  = "/etc/machine-id"
-)
+import "golang.org/x/sys/windows/registry"
 
 func readMachineID() (string, error) {
-	id, err := readMachineIDFile(dbusMachineIDPath)
-	if err != nil {
-		id, err = readMachineIDFile(etcMachineIDPath)
-	}
+	k, err := registry.OpenKey(
+		registry.LOCAL_MACHINE,
+		windowsRegistryCryptographyPath,
+		registry.QUERY_VALUE|registry.WOW64_64KEY,
+	)
 	if err != nil {
 		return "", ErrNotFound
 	}
-	return id, nil
-}
+	defer k.Close()
 
-func readMachineIDFile(path string) (string, error) {
-	data, err := os.ReadFile(path)
+	value, _, err := k.GetStringValue(windowsMachineGuidKey)
 	if err != nil {
-		return "", err
-	}
-	if len(data) == 0 {
 		return "", ErrNotFound
 	}
-	return string(data), nil
+	if value == "" {
+		return "", ErrNotFound
+	}
+	return value, nil
 }

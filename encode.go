@@ -20,7 +20,7 @@ package abdalmf
 import (
 	"errors"
 
-	"github.com/ebrasha/abdal-machine-fingerprint/core/encode"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/encode"
 )
 
 // AbdalEncode returns a protected fingerprint using the requested output encoding.

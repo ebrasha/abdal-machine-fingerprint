@@ -10,6 +10,7 @@ Cross-platform Go library for stable machine identity and cryptographically deri
 
 **Module:** `github.com/ebrasha/abdal-machine-fingerprint`  
 **Package:** `abdalmf`  
+**Version:** `1.0.0` (`abdalmf.Version`)  
 **Go:** 1.25+
 
 ---
@@ -177,13 +178,20 @@ Use `errors.Is()` with sentinel errors:
 
 ```
 abdal-machine-fingerprint/
-├── abdalmf.go (public API files)
-└── core/
+├── abdalconstants.go
+├── id.go, hash.go, protected.go, encode.go
+└── internal/
     ├── encode/
     ├── hash/
     ├── machine/
     ├── normalize/
     └── platform/
+```
+
+Access runtime version:
+
+```go
+abdalmf.Version
 ```
 
 ---

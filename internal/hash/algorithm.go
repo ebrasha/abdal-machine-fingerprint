@@ -25,24 +25,24 @@ import (
 // Algorithm identifies a supported hash algorithm by its canonical name.
 type Algorithm string
 
-// Canonical algorithm identifiers.
+// Canonical algorithm identifiers. Values mirror abdalmf/abdalconstants.go.
 const (
-	AlgoMD5         Algorithm = "MD5"
-	AlgoSHA1        Algorithm = "SHA1"
-	AlgoSHA224      Algorithm = "SHA224"
-	AlgoSHA256      Algorithm = "SHA256"
-	AlgoSHA384      Algorithm = "SHA384"
-	AlgoSHA512      Algorithm = "SHA512"
-	AlgoSHA512224   Algorithm = "SHA512-224"
-	AlgoSHA512256   Algorithm = "SHA512-256"
-	AlgoSHA3224     Algorithm = "SHA3-224"
-	AlgoSHA3256     Algorithm = "SHA3-256"
-	AlgoSHA3384     Algorithm = "SHA3-384"
-	AlgoSHA3512     Algorithm = "SHA3-512"
-	AlgoBLAKE2B256  Algorithm = "BLAKE2B-256"
-	AlgoBLAKE2B384  Algorithm = "BLAKE2B-384"
-	AlgoBLAKE2B512  Algorithm = "BLAKE2B-512"
-	AlgoBLAKE2S256  Algorithm = "BLAKE2S-256"
+	AlgoMD5        Algorithm = "MD5"
+	AlgoSHA1       Algorithm = "SHA1"
+	AlgoSHA224     Algorithm = "SHA224"
+	AlgoSHA256     Algorithm = "SHA256"
+	AlgoSHA384     Algorithm = "SHA384"
+	AlgoSHA512     Algorithm = "SHA512"
+	AlgoSHA512224  Algorithm = "SHA512-224"
+	AlgoSHA512256  Algorithm = "SHA512-256"
+	AlgoSHA3224    Algorithm = "SHA3-224"
+	AlgoSHA3256    Algorithm = "SHA3-256"
+	AlgoSHA3384    Algorithm = "SHA3-384"
+	AlgoSHA3512    Algorithm = "SHA3-512"
+	AlgoBLAKE2B256 Algorithm = "BLAKE2B-256"
+	AlgoBLAKE2B384 Algorithm = "BLAKE2B-384"
+	AlgoBLAKE2B512 Algorithm = "BLAKE2B-512"
+	AlgoBLAKE2S256 Algorithm = "BLAKE2S-256"
 )
 
 // ErrUnsupportedAlgorithm indicates that the requested algorithm is unknown.
@@ -70,22 +70,22 @@ func normalizeAlgorithmName(name string) string {
 }
 
 var algorithmAliases = map[string]Algorithm{
-	"MD5":         AlgoMD5,
-	"SHA1":        AlgoSHA1,
-	"SHA224":      AlgoSHA224,
-	"SHA256":      AlgoSHA256,
-	"SHA384":      AlgoSHA384,
-	"SHA512":      AlgoSHA512,
-	"SHA512224":   AlgoSHA512224,
-	"SHA512256":   AlgoSHA512256,
-	"SHA3224":     AlgoSHA3224,
-	"SHA3256":     AlgoSHA3256,
-	"SHA3384":     AlgoSHA3384,
-	"SHA3512":     AlgoSHA3512,
-	"BLAKE2B256":  AlgoBLAKE2B256,
-	"BLAKE2B384":  AlgoBLAKE2B384,
-	"BLAKE2B512":  AlgoBLAKE2B512,
-	"BLAKE2S256":  AlgoBLAKE2S256,
+	normalizeAlgorithmName(string(AlgoMD5)):        AlgoMD5,
+	normalizeAlgorithmName(string(AlgoSHA1)):       AlgoSHA1,
+	normalizeAlgorithmName(string(AlgoSHA224)):     AlgoSHA224,
+	normalizeAlgorithmName(string(AlgoSHA256)):     AlgoSHA256,
+	normalizeAlgorithmName(string(AlgoSHA384)):     AlgoSHA384,
+	normalizeAlgorithmName(string(AlgoSHA512)):     AlgoSHA512,
+	normalizeAlgorithmName(string(AlgoSHA512224)):  AlgoSHA512224,
+	normalizeAlgorithmName(string(AlgoSHA512256)):  AlgoSHA512256,
+	normalizeAlgorithmName(string(AlgoSHA3224)):    AlgoSHA3224,
+	normalizeAlgorithmName(string(AlgoSHA3256)):    AlgoSHA3256,
+	normalizeAlgorithmName(string(AlgoSHA3384)):    AlgoSHA3384,
+	normalizeAlgorithmName(string(AlgoSHA3512)):    AlgoSHA3512,
+	normalizeAlgorithmName(string(AlgoBLAKE2B256)): AlgoBLAKE2B256,
+	normalizeAlgorithmName(string(AlgoBLAKE2B384)): AlgoBLAKE2B384,
+	normalizeAlgorithmName(string(AlgoBLAKE2B512)): AlgoBLAKE2B512,
+	normalizeAlgorithmName(string(AlgoBLAKE2S256)): AlgoBLAKE2S256,
 }
 
 // SupportsStandardHMAC reports whether the algorithm can be used with crypto/hmac.

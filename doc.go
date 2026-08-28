@@ -18,6 +18,8 @@
 // Package abdalmf provides a cross-platform API for stable machine identity
 // and cryptographically derived machine fingerprints.
 //
+// Version reports the current package release via the Version constant in abdalconstants.go.
+//
 // AbdalID returns the raw operating-system machine identifier. Treat it as
 // confidential; storage, display, and transmission are the developer's
 // responsibility.

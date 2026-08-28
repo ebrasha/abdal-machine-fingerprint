@@ -20,9 +20,9 @@ package abdalmf
 import (
 	"errors"
 
-	"github.com/ebrasha/abdal-machine-fingerprint/core/encode"
-	"github.com/ebrasha/abdal-machine-fingerprint/core/hash"
-	"github.com/ebrasha/abdal-machine-fingerprint/core/machine"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/encode"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/hash"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/machine"
 )
 
 // AbdalHash returns a lowercase hexadecimal hash of the normalized machine ID.
@@ -45,7 +45,7 @@ func AbdalHash(algorithm string) (string, error) {
 		return "", err
 	}
 
-	encoded, err := encode.Bytes(digest, encode.EncodingHex)
+	encoded, err := encode.Bytes(digest, encode.Encoding(DefaultEncoding))
 	if err != nil {
 		return "", ErrUnsupportedEncoding
 	}

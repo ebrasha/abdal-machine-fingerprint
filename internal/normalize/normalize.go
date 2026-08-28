@@ -20,7 +20,7 @@ package normalize
 import (
 	"strings"
 
-	"github.com/ebrasha/abdal-machine-fingerprint/core/platform"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/platform"
 )
 
 // ErrEmpty is returned when normalization produces an empty machine ID.

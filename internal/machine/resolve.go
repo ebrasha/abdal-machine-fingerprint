@@ -20,8 +20,8 @@ package machine
 import (
 	"errors"
 
-	"github.com/ebrasha/abdal-machine-fingerprint/core/normalize"
-	"github.com/ebrasha/abdal-machine-fingerprint/core/platform"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/normalize"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/platform"
 )
 
 // NormalizedID reads and normalizes the host machine identifier.

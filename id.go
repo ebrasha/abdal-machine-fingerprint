@@ -18,7 +18,7 @@
 package abdalmf
 
 import (
-	"github.com/ebrasha/abdal-machine-fingerprint/core/machine"
+	"github.com/ebrasha/abdal-machine-fingerprint/internal/machine"
 )
 
 // AbdalID returns the normalized raw machine identifier for the current host.

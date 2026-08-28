@@ -10,6 +10,7 @@
 
 **ماژول:** `github.com/ebrasha/abdal-machine-fingerprint`  
 **پکیج:** `abdalmf`  
+**نسخه:** `1.0.0` (`abdalmf.Version`)  
 **نسخه Go:** 1.25+
 
 ---
@@ -177,13 +178,20 @@ CGO_ENABLED=1 go build ./...
 
 ```
 abdal-machine-fingerprint/
-├── فایل‌های API عمومی (abdalmf)
-└── core/
+├── abdalconstants.go
+├── id.go, hash.go, protected.go, encode.go
+└── internal/
     ├── encode/
     ├── hash/
     ├── machine/
     ├── normalize/
     └── platform/
+```
+
+دسترسی به نسخه runtime:
+
+```go
+abdalmf.Version
 ```
 
 ---
